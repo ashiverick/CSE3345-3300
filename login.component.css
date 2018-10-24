@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  margin-bottom: 1em;
+}
+
+main > * {
+  display: none;
+}
+
+main > .active {
+  display: initial;
+}
+
+.card{
+  width: 18rem;
+  padding:0;
+}
+
+#clear-me{
+  opacity: .4;
+}
+
+#clear-me:hover{
+  opacity: 1;
+}
+
