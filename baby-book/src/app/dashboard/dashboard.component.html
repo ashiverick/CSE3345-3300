@@ -1,0 +1,8 @@
+<h3>Children</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let child of children" class="col-1-4" routerLink="/detail/{{child.id}}">
+    <div class="module child">
+      <h4>{{child.name}}</h4>
+    </div>
+  </a>
+</div>

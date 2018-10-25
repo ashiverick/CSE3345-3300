@@ -1,0 +1,12 @@
+<div *ngIf="child">
+
+  <h2>{{child.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{child.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="child.name" placeholder="name"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+
+</div>
