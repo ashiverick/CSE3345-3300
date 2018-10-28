@@ -1,5 +1,3 @@
-
-
 <section class>
   <div class>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -41,8 +39,7 @@
         <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-              placeholder="Enter email">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">Example: person@website.com</small>
           </div>
           <div class="form-group">
@@ -50,6 +47,7 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-primary" (click)="onLoginClick()">Submit</button>
+          <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#myModal">Create Account</button>
         </form>
       </div>
     </div>
