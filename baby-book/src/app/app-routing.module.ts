@@ -7,7 +7,7 @@ import { ChildDetailComponent } from './child-detail/child-detail.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: ChildDetailComponent },
   { path: 'children', component: ChildrenComponent },
