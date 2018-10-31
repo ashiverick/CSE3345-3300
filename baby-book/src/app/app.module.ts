@@ -9,6 +9,7 @@ import { ChildDetailComponent } from './child-detail/child-detail.component';
 import { PostComponent } from './post/post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { ModifyAccountComponent } from './modify-account/modify-account.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
     ChildDetailComponent,
     PostComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    ModifyAccountComponent
   ],
   imports: [
     BrowserModule,
