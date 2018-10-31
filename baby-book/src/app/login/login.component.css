@@ -16,7 +16,6 @@ main > .active {
 
 .card{
   width: 18rem;
-  margin-top: 1rem;
   padding:0;
 }
 
@@ -26,4 +25,8 @@ main > .active {
 
 #clear-me:hover{
   opacity: 1;
+}
+
+button {
+  margin: .5em;
 }

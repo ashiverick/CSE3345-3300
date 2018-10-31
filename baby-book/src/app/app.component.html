@@ -1,10 +1,9 @@
-<!-- <h1>{{title}}</h1> -->
-<!-- <nav *ngIf="!isUserLoggedIn">
-  <a routerLink="/login">Login</a>
-</nav> -->
-<nav *ngIf="isUserLoggedIn">
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/children">Children</a>
-</nav>
-<router-outlet></router-outlet>
-<app-post></app-post>
+<nav *ngIf="!isUserLoggedIn">
+    <a routerLink="/login">Login</a>
+  </nav>
+  <nav *ngIf="isUserLoggedIn">
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/children">Children</a>
+  </nav>
+  <router-outlet></router-outlet>
+  <app-post></app-post>
