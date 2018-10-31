@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: ChildDetailComponent },
   { path: 'children', component: ChildrenComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'modify', component: ModifyAccountComponent}
+  { path: 'modify-account', component: ModifyAccountComponent}
 ];
 
 @NgModule({
