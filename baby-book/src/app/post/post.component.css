@@ -11,16 +11,6 @@ body, input[text], button {
   color: crimson;
   font-family: Cambria, Georgia;
 }
-
-button.clear {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
 button:hover {
   background-color: #cfd8dc;
 }
@@ -29,7 +19,9 @@ button:disabled {
   color: #aaa;
   cursor: auto;
 }
-button.clear {
-  color: #888;
-  margin-bottom: 12px;
+textarea {
+  width: 10em;
+}
+.card {
+  background: clear;
 }

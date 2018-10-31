@@ -4,12 +4,12 @@
     <div class="card body">
       <h2>Posts</h2>
       <div class="input-group">
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <form target="_self">
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+          <button type="submit" formtarget="_self">Submit</button>
+        </form>
       </div>
-      <button class="clear"
-              (click)="postService.clear()">clear</button>
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <div *ngFor='let post of postService.posts'> {{post}} </div>
+      <!-- <div *ngFor='let post of postService.posts'> {{post}} </div> -->
     </div>
   </div>
 
