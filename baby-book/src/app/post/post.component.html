@@ -1,11 +1,11 @@
 <div *ngIf="postService.posts.length">
 
-  <div class="card mx-auto" style="width:80%;">
+  <div class="card mx-auto" style="width:80%;" id="post">
     <div class="card body">
       <h2>Posts</h2>
       <div class="input-group">
         <form target="_self">
-          <textarea class="form-control" aria-label="With textarea"></textarea>
+          <textarea class="form-control" aria-label="With textarea" style="width:100%;"></textarea>
           <button type="submit" formtarget="_self">Submit</button>
         </form>
       </div>

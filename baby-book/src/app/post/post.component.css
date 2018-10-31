@@ -20,7 +20,7 @@ button:disabled {
   cursor: auto;
 }
 textarea {
-  width: 10em;
+  width: 100%;
 }
 .card {
   background: clear;
