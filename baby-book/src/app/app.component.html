@@ -1,10 +1,10 @@
 <nav *ngIf="!isUserLoggedIn">
-    <a routerLink="/login">Login</a>
-  </nav>
-  <nav *ngIf="isUserLoggedIn">
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/children">Children</a>
-    <a routerlink= "/modify-account">Modify Account</a>
-  </nav>
-  <router-outlet></router-outlet>
-  <!-- <app-post></app-post> -->
+  <a routerLink="/login">Login</a>
+</nav>
+<nav *ngIf="isUserLoggedIn">
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/children">Children</a>
+  <a routerlink= "/modify-account">Modify Account</a>
+</nav>
+<router-outlet></router-outlet>
+<!-- <app-post></app-post> -->

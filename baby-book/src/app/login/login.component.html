@@ -1,4 +1,5 @@
 <section class>
+
     <div class>
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -14,11 +15,15 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
+                    placeholder="Enter email" [(ngModel)]="user.email">
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
+                  <label for="exampleInputUserName1" [(ngModel)]="user.userName">Username</label>
+                  <input type="text" class="form-control" id="exampleInputUserName1" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1" [(ngModel)]="user.password">Password</label>
                   <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
               </form>
@@ -38,9 +43,8 @@
         <div class="card-body">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">Example: person@website.com</small>
+              <label for="exampleInputUserName1">Username</label>
+              <input type="text" class="form-control" id="exampleInputUserName1" placeholder="Enter Username">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -51,12 +55,6 @@
           </form>
         </div>
       </div>
-
-
-
-
     </div>
-    <!--this closes the div that has the class of col-->
-
 
   </section>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  @Input()
+  user: User;
 
   constructor( private router: Router ) { }
 
