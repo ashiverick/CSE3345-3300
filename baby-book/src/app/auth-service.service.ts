@@ -11,7 +11,7 @@ import 'rxjs/add/operator/catch';
 })
 export class AuthServiceService {
 
-  protected endPoint = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/';
+  protected endPoint = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080';
 
   protected httpOptions = {
     headers: new HttpHeaders({
