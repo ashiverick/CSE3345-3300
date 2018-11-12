@@ -22,10 +22,11 @@ export class AuthServiceService {
   constructor(private http: HttpClient) { }
 
   login(userName: string, passW: string) {
-    return this.http.post<any>(`${this.endPoint}/login`, {'userName': userName, 'passW' : passW}).map(user => {
+    return this.http.post<any>(`${this.endPoint}/login`, {userName: userName, passW : passW}).map(user => {
       if (user && user.token) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem('userName', userName);
+        console.log(localStorage.getItem('currentUser'));
       }
       return user;
     });
