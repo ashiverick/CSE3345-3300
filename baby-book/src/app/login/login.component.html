@@ -21,11 +21,11 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputUserName1">Username</label>
-                  <input type="text" class="form-control" id="exampleInputUserName1" placeholder="Enter Username" [(ngModel)]="user.userName">
+                  <input type="text" class="form-control" id="exampleInputUserName1" placeholder="Enter Username" [(ngModel)]="user.userName" name="somethingelseelse">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="user.password">
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="user.password" name="somethingelseelseelse">
                 </div>
               </form>
             </div>
@@ -45,11 +45,11 @@
           <form>
             <div class="form-group">
               <label for="exampleInputUserName1">Username</label>
-              <input type="text" class="form-control" id="exampleInputUserName1" placeholder="Enter Username" [(ngModel)]="username">
+              <input type="text" class="form-control" id="exampleInputUserName1" placeholder="Enter Username" [(ngModel)]="username" name="something">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="password">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="password" name="somethingelse">
             </div>
             <button type="submit" class="btn btn-primary" (click)="onLoginClick()">Submit</button>
             <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#myModal">Create Account</button>
