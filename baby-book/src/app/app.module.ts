@@ -10,6 +10,7 @@ import { PostComponent } from './post/post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ModifyAccountComponent } from './modify-account/modify-account.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ModifyAccountComponent } from './modify-account/modify-account.componen
     PostComponent,
     DashboardComponent,
     LoginComponent,
-    ModifyAccountComponent
+    ModifyAccountComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
