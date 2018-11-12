@@ -1,24 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Child } from './child';
-import { CHILDREN } from './mock-children';
-import { PostService } from './post.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChildService {
 
-  constructor(private postService: PostService) { }
+  protected endPoint = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children/[{email}]';
 
-  getChildren(): Observable<Child[]> {
-    this.postService.add('ChildService: fetched children');
-    return of(CHILDREN);
+  protected httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
+  constructor(protected httpClient: HttpClient) { }
+
+  getById(id: number): Observable<Child> {
+    return this.httpClient
+      .get<Child>(`${this.endPoint}/${id}`, this.httpOptions)
+      .pipe(catchError(this.handleException));
   }
 
-  getChild(id: number): Observable<Child> {
-    this.postService.add(`ChildService: fetched child id=${id}`);
-    return of(CHILDREN.find(child => child.id === id));
+  getAll(): Observable<Child []> {
+    return this.httpClient
+      .get<Child []>(`${this.endPoint}`, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
+  protected handleException(exception: any) {
+    // tslint:disable-next-line:no-var-keyword prefer-const
+    var message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
+    alert(message);
+    return Observable.throw(exception);
   }
 }
