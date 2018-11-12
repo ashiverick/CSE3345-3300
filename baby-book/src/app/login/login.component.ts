@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.logout();
+    this.user = {email: '', userName: '', password: '', children: []};
   }
 
   public onLoginClick() {
