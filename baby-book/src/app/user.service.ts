@@ -31,6 +31,12 @@ export class UserService {
       .pipe(catchError(this.handleException));
   }
 
+  addAccount(user: User): Observable<User> {
+    return this.httpClient
+      .post<User>(`${this.endPoint}/logging-in`, user, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
   protected handleException(exception: any) {
     // tslint:disable-next-line:no-var-keyword prefer-const
     var message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;

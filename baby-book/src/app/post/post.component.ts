@@ -20,9 +20,9 @@ export class PostComponent implements OnInit {
   }
 
   addPost() {
-    this.postService.add(this.post).subscribe( alden => {
+    this.postService.add(this.post).subscribe( nothing => {
       this.post.date = new Date();
-      console.log(alden);
+      console.log(nothing);
       this.child.posts.push(this.post);
       this.postService.add(this.post);
       this.post = {};
