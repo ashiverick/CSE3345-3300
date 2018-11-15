@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getChildren(): void {
-    this.childService.getAll()
+    this.childService.getAllChildren()
       .subscribe(children => this.children = children.slice(1, 5));
   }
 

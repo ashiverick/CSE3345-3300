@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
     this.userService.addAccount(this.user).subscribe( nothing => {
       this.userService.addAccount(this.user);
       this.user.post(this.user);
+      console.log(nothing);
       this.user = {email: '', userName: '', password: '', children: []};
     });
   }

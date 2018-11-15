@@ -33,7 +33,7 @@ export class UserService {
 
   addAccount(user: User): Observable<User> {
     return this.httpClient
-      .post<User>(`${this.endPoint}/logging-in`, user, this.httpOptions)
+      .post<User>(`${this.endPoint}/user`, user, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 

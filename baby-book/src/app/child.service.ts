@@ -19,13 +19,13 @@ export class ChildService {
 
   constructor(protected httpClient: HttpClient) { }
 
-  getById(id: number): Observable<Child> {
+  getChildById(id: number): Observable<Child> {
     return this.httpClient
       .get<Child>(`${this.endPoint}/${id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
-  getAll(): Observable<Child []> {
+  getAllChildren(): Observable<Child []> {
     return this.httpClient
       .get<Child []>(`${this.endPoint}`, this.httpOptions)
       .pipe(catchError(this.handleException));
