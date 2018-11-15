@@ -40,6 +40,18 @@ $app->post('/hero', function ($request, $response) {
     return $this->response->withJson($input);
 });
 
+$app->post('/user', function ($request, $response) {
+        $input = $request->getParsedBody();
+        $sql = "INSERT INTO 
+            users (email, userName, passw) 
+            VALUES (:email, :userName, :passw)";
+        $sth = $this->db->prepare($sql);
+        $sth->bindParam("email", $input['email']);
+        $sth->bindParam("userName", $input['userName']);
+        $sth->bindParam("passw", $input['passw']);
+        $sth->execute();
+        return $this->response->withJson($input);
+    });
 
 //GET REQUESTS
 
