@@ -18,7 +18,7 @@ export class ChildrenComponent implements OnInit {
   }
 
   getChildren(): void {
-    this.childService.getAll().subscribe(children => this.children = children);
+    this.childService.getAllChildren().subscribe(children => this.children = children);
   }
 
 }

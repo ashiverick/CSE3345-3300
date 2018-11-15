@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { AuthServiceService } from '../auth-service.service';
@@ -13,7 +13,8 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
   username: string;
@@ -51,6 +52,7 @@ export class LoginComponent implements OnInit {
     this.userService.addAccount(this.user).subscribe( nothing => {
       this.userService.addAccount(this.user);
       this.user.post(this.user);
+      console.log(nothing);
       this.user = {email: '', userName: '', password: '', children: []};
     });
   }
