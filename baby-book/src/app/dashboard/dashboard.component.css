@@ -60,3 +60,10 @@ h4 {
     min-width: 60px;
   }
 }
+
+body {
+  background-image: url("https://comps.canstockphoto.com/cute-smiling-baby-stock-photos_csp5587753.jpg");
+  background-color: #cccccc;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
