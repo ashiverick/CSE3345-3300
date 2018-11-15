@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { User } from './user';
+import { Token } from './token';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -22,19 +24,19 @@ export class AuthServiceService {
   constructor(private http: HttpClient) { }
 
   login(userName: string, passW: string) {
-    return this.http.post<any>(`${this.endPoint}/login`, {userName: userName, passW : passW}).map(user => {
+    console.log('login route');
+    return this.http.post<any>(`${this.endPoint}/login`, {userName, passW})
+    .pipe(map(user => {
       if (user && user.token) {
         localStorage.setItem('currentUser', JSON.stringify(user));
-        localStorage.setItem('userName', userName);
         console.log(localStorage.getItem('currentUser'));
       }
       return user;
-    });
+    }));
   }
 
   logout() {
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('userName');
   }
 
   protected handleException(exception: any) {
