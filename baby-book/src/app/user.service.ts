@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { User } from './user';
+import { Child } from './child';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,12 @@ export class UserService {
   addAccount(user: User): Observable<User> {
     return this.httpClient
       .post<User>(`${this.endPoint}/user`, user, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
+  addChild(child: Child): Observable<Child> {
+    return this.httpClient
+      .post<Child>(`${this.endPoint}/children`, child, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
