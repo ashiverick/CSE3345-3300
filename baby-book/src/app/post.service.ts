@@ -13,7 +13,7 @@ export class PostService {
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'ashiverick'
+      // 'Authorization': 'ashiverick'
     })
   };
 

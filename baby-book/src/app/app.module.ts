@@ -12,7 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ModifyAccountComponent } from './modify-account/modify-account.component';
 import { AlertComponent } from './alert/alert.component';
-import { JwtInterceptor } from './jwt.interceptor';
+import { JwtInterceptor } from './domain/helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,11 +31,9 @@ import { JwtInterceptor } from './jwt.interceptor';
     FormsModule,
     HttpClientModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: JwtInterceptor,
-    multi: true
-  }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

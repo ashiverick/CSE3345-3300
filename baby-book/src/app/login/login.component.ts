@@ -2,11 +2,13 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { AuthServiceService } from '../auth-service.service';
+import { Token } from '../token';
 // import { disableDebugTools } from '@angular/platform-browser';
 // import { AlertComponent } from '../alert/alert.component';
 // import { Alert } from '../alert';
 import { AlertService } from '../alert.service';
 import { UserService } from '../user.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,7 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
+  token: Token;
 
   @Input()
   user: User;
@@ -34,10 +37,13 @@ export class LoginComponent implements OnInit {
   }
 
   public onLoginClick() {
-    this.authService.login(this.username, this.password);
-    if (localStorage.getItem('currentUser')) { this.router.navigate(['../dashboard']);
+    this.authService.login(this.username, this.password)
+    .pipe(first())
+    .subscribe();
 
-  } else {
+    if (localStorage.getItem('currentUser')) { this.router.navigate(['../dashboard']);
+    } else {
+      console.log(localStorage.getItem('currentUser'));
       this.alertService.error('Authentication Error! :(');
     }
   }
