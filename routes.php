@@ -153,3 +153,18 @@ $app->post('/user', function ($request, $response) {
         $sth->execute();
         return $this->response->withJson($input);
     });
+
+$app->post('/children', function ($request, $response) {
+        $input = $request->getParsedBody();
+        $sql = "INSERT INTO 
+            children (parent, firstName, lastName, gender, birthday)
+            VALUES (:parent, :firstName, :lastName, :gender, :birthday)";
+        $sth = $this->db->prepare($sql);
+        $sth->bindParam("parent", $input['parent']);
+        $sth->bindParam("firstName", $input['firstName']);
+        $sth->bindParam("lastName", $input['lastName']);
+        $sth->bindParam("gender", $input['gender']);
+        $sth->bindParam("birthday", $input['birthday']);
+        $sth->execute();
+        return $this->response->withJson($input);
+    });
