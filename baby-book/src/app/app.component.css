@@ -9,25 +9,36 @@ h2 {
   margin-top: 0;
   padding-top: 0;
 }
+
+nav a .navbar-brand {
+  background-color: blue;
+  color: white;
+}
+
 nav a {
   padding: 5px 10px;
   text-decoration: none;
   display: inline-block;
-  background-color: #eee;
+  /* background-color: #eee;  */
   border-radius: 4px;
 }
+
 nav a:visited, a:link {
-  color: #607d8b;
+  color: white;
 }
 nav a:hover {
-  color: #039be5;
-  background-color: #cfd8dc;
+  color: rgb(123, 206, 250);
+  /* background-color: #cfd8dc; */
 }
 nav a.active {
-  color: #039be5;
+  color: rgb(123, 206, 250);
 }
 
 nav {
   border-left-style: solid;
   border-right-style: solid;
+}
+
+nav .button {
+  background-color: black;
 }

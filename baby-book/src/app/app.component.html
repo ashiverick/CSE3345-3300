@@ -1,9 +1,10 @@
-<nav class="navbar" *ngIf="!isUserLoggedIn">
-  <a class="navbar-brand" href="">Babybook</a>
-  <a routerLink="/login">Login</a>
+<nav class="navbar navbar-dark bg-primary justify-content-between" *ngIf="!isUserLoggedIn">
+  <a class="navbar-brand h1 mt-2" href="">Babybook</a>
+  <!-- <a class="button" routerLink="/login">Login</a> -->
+  <button class="btn btn-dark" type="button" routerLink="/login">Login</button>
 </nav>
-<nav class="navbar" *ngIf="isUserLoggedIn">
-  <a class="navbar-brand" href="">Babybook</a>
+<nav class="navbar navbar-dark bg-primary justify-content-between" *ngIf="isUserLoggedIn">
+  <a class="navbar-brand h1 mt-2" href="">Babybook</a>
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/children">Children</a>
   <a routerlink="/modify-account">Modify Account</a>
