@@ -1,6 +1,8 @@
 <div *ngIf="child">
-
-  <h2>{{child.name}}</h2>
+  <img src="babyDefaultProfile.png">
+  <h2>{{child.firstName}} {{child.lastName}}</h2>
+  <h3>{{child.gender}}</h3>
+  <h3>{{child.birthday}}</h3>
   <app-post></app-post>
   <button (click)="goBack()">go back</button>
 
