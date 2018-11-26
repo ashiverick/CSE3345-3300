@@ -32,12 +32,15 @@ export class ModifyAccountComponent implements OnInit {
   }
 
   public onAddChild() {
-    this.userService.addAccount(this.user).subscribe( nothing => {
-      this.userService.addAccount(this.user);
-      this.user.post(this.user);
-      console.log(nothing);
-      this.user = {email: '', userName: '', password: '', children: []};
-    });
+    // figure out how to add a child to an account
+  }
+
+  public onDeleteChild() {
+    // figure out how to delete a child from an account
+  }
+
+  public updateAccount() {
+    // figure out how to update the account information
   }
 
 }

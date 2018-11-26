@@ -7,3 +7,11 @@
 button {
   margin: 10px;
 }
+
+.form-group {
+  padding: 1em;
+}
+
+#date {
+  margin: 1em;
+}
