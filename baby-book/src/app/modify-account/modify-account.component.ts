@@ -32,7 +32,11 @@ export class ModifyAccountComponent implements OnInit {
   }
 
   public onAddChild() {
-    // figure out how to add a child to an account
+    this.userService.addChild(this.newChild).subscribe( nothing => {
+      this.userService.addChild(this.newChild);
+      this.newChild.birthday = new Date();
+      this.newChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: '', posts: []};
+    });
   }
 
   public onDeleteChild() {
