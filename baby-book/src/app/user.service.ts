@@ -34,13 +34,19 @@ export class UserService {
 
   addAccount(user: User): Observable<User> {
     return this.httpClient
-      .post<User>(`${this.endPoint}/user`, user, this.httpOptions)
+      .post<User>(`http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/user`, user, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
   addChild(child: Child): Observable<Child> {
     return this.httpClient
       .post<Child>(`${this.endPoint}/children`, child, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
+  deleteChild(child: Child): Observable<Child> {
+    return this.httpClient
+      .delete<Child>(`${this.endPoint}/children/${child.id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 

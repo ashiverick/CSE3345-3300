@@ -16,6 +16,7 @@ export class ModifyAccountComponent implements OnInit {
   @Input()
   user: User;
   newChild: Child;
+  deletingChild: Child;
 
   constructor(
     private router: Router,
@@ -34,13 +35,19 @@ export class ModifyAccountComponent implements OnInit {
   public onAddChild() {
     this.userService.addChild(this.newChild).subscribe( nothing => {
       this.userService.addChild(this.newChild);
+      console.log(nothing);
       this.newChild.birthday = new Date();
       this.newChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: '', posts: []};
     });
   }
 
   public onDeleteChild() {
-    // figure out how to delete a child from an account
+    this.userService.deleteChild(this.deletingChild).subscribe( nothing => {
+      this.userService.deleteChild(this.deletingChild);
+      console.log(nothing);
+      this.deletingChild.birthday = new Date();
+      this.deletingChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: '', posts: []};
+    });
   }
 
   public updateAccount() {
