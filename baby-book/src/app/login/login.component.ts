@@ -29,25 +29,25 @@ export class LoginComponent implements OnInit {
     private authService: AuthServiceService,
     private alertService: AlertService,
     private userService: UserService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.authService.logout();
-    this.user = {email: '', userName: '', password: '', children: []};
+    this.user = { email: '', userName: '', password: '', children: [] };
   }
 
   public onLoginClick() {
     this.authService.login(this.username, this.password)
-    .pipe(first())
-    .subscribe(
-      data => {
-        this.router.navigate(['../dashboard']);
-      },
-      error => {
-        console.log(localStorage.getItem('currentUser'));
-        this.alertService.error('Authentication Error! :(');
-      }
-    );
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate(['../dashboard']);
+        },
+        error => {
+          console.log(localStorage.getItem('currentUser'));
+          this.alertService.error('Authentication Error! :(');
+        }
+      );
 
     // if (localStorage.getItem('currentUser')) { this.router.navigate(['../dashboard']);
     // } else {
@@ -56,12 +56,24 @@ export class LoginComponent implements OnInit {
     // }
   }
 
+  public onLogoutClick() {
+    if (localStorage.getItem('currentUser')) {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('userName');
+      // tslint:disable-next-line:prefer-const no-var-keyword
+      this.alertService.success('You have successfully logged out!');
+    } else {
+      this.alertService.info('No profile is currently signed in!');
+    }
+
+  }
+
   public onCreateAccountClick() {
-    this.userService.addAccount(this.user).subscribe( nothing => {
+    this.userService.addAccount(this.user).subscribe(nothing => {
       this.userService.addAccount(this.user);
       this.user.post(this.user);
       console.log(nothing);
-      this.user = {email: '', userName: '', password: '', children: []};
+      this.user = { email: '', userName: '', password: '', children: [] };
     });
   }
 }

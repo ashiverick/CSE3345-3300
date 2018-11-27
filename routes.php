@@ -142,29 +142,36 @@ $app->get('/comment/[{id}]', function ($request, $response, $args){
 //POST REQUESTS
 
 $app->post('/user', function ($request, $response) {
-        $input = $request->getParsedBody();
-        $sql = "INSERT INTO 
-            users (email, userName, passw) 
-            VALUES (:email, :userName, :passw)";
-        $sth = $this->db->prepare($sql);
-        $sth->bindParam("email", $input['email']);
-        $sth->bindParam("userName", $input['userName']);
-        $sth->bindParam("passw", $input['passw']);
-        $sth->execute();
-        return $this->response->withJson($input);
-    });
+    $input = $request->getParsedBody();
+    $sql = "INSERT INTO 
+        users (email, userName, passw) 
+        VALUES (:email, :userName, :passw)";
+    $sth = $this->db->prepare($sql);
+    $sth->bindParam("email", $input['email']);
+    $sth->bindParam("userName", $input['userName']);
+    $sth->bindParam("passw", $input['passw']);
+    $sth->execute();
+    return $this->response->withJson($input);
+});
 
 $app->post('/children', function ($request, $response) {
-        $input = $request->getParsedBody();
-        $sql = "INSERT INTO 
-            children (parent, firstName, lastName, gender, birthday)
-            VALUES (:parent, :firstName, :lastName, :gender, :birthday)";
-        $sth = $this->db->prepare($sql);
-        $sth->bindParam("parent", $input['parent']);
-        $sth->bindParam("firstName", $input['firstName']);
-        $sth->bindParam("lastName", $input['lastName']);
-        $sth->bindParam("gender", $input['gender']);
-        $sth->bindParam("birthday", $input['birthday']);
-        $sth->execute();
-        return $this->response->withJson($input);
-    });
+    $input = $request->getParsedBody();
+    $sql = "INSERT INTO 
+        children (parent, firstName, lastName, gender, birthday)
+        VALUES (:parent, :firstName, :lastName, :gender, :birthday)";
+    $sth = $this->db->prepare($sql);
+    $sth->bindParam("parent", $input['parent']);
+    $sth->bindParam("firstName", $input['firstName']);
+    $sth->bindParam("lastName", $input['lastName']);
+    $sth->bindParam("gender", $input['gender']);
+    $sth->bindParam("birthday", $input['birthday']);
+    $sth->execute();
+    return $this->response->withJson($input);
+});
+
+// Catch-all route to serve a 404 Not Found page if none of the routes match
+// NOTE: make sure this route is defined last
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
+    $handler = $this->notFoundHandler; // handle using the default Slim page not found handler
+    return $handler($req, $res);
+});
