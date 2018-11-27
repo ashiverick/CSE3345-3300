@@ -39,13 +39,21 @@ export class LoginComponent implements OnInit {
   public onLoginClick() {
     this.authService.login(this.username, this.password)
     .pipe(first())
-    .subscribe();
+    .subscribe(
+      data => {
+        this.router.navigate(['../dashboard']);
+      },
+      error => {
+        console.log(localStorage.getItem('currentUser'));
+        this.alertService.error('Authentication Error! :(');
+      }
+    );
 
-    if (localStorage.getItem('currentUser')) { this.router.navigate(['../dashboard']);
-    } else {
-      console.log(localStorage.getItem('currentUser'));
-      this.alertService.error('Authentication Error! :(');
-    }
+    // if (localStorage.getItem('currentUser')) { this.router.navigate(['../dashboard']);
+    // } else {
+    //   console.log(localStorage.getItem('currentUser'));
+    //   this.alertService.error('Authentication Error! :(');
+    // }
   }
 
   public onCreateAccountClick() {

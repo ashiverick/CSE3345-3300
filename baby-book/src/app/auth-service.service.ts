@@ -29,7 +29,9 @@ export class AuthServiceService {
     .pipe(map(user => {
       if (user && user.token) {
         localStorage.setItem('currentUser', JSON.stringify(user));
-        console.log(localStorage.getItem('currentUser'));
+        console.log('currentUser is: ' + localStorage.getItem('currentUser'));
+        localStorage.setItem('userName', userName);
+        console.log('the userName is: ' + localStorage.getItem('userName'));
       }
       return user;
     }));

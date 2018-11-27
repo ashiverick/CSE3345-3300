@@ -12,15 +12,17 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   children: Child[] = [];
 
-  constructor(private childService: ChildService, private router: Router) { }
+  constructor(
+    private childService: ChildService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getChildren();
   }
 
-  getChildren(): void {
+  getChildren() {
     this.childService.getAllChildren()
-      .subscribe(children => this.children = children.slice(1, 5));
+      .subscribe(children => this.children = children);
   }
 
   public onChildClick() {

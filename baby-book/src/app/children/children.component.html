@@ -1,7 +1,7 @@
 <ul class="children">
   <li *ngFor="let child of children">
     <a routerLink="/detail/{{child.id}}">
-      <span class="badge">{{child.id}}</span> {{child.name}}
+      <span class="badge">{{child.firstName}}</span>
     </a>
   </li>
 </ul>
