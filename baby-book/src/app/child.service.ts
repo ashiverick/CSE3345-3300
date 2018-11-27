@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ChildService {
 
-  protected endPoint = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children/[{user}]';
+  protected endPoint = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children/';
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -19,19 +19,25 @@ export class ChildService {
 
   constructor(protected httpClient: HttpClient) { }
 
-  getChildByParent(user: string): Observable<Child> {
-    // return this.httpClient
-    //   .get<Child>(`${this.endPoint}/${id}`, this.httpOptions)
-    //   .pipe(catchError(this.handleException));
-
-    const url = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children' + '/' + localStorage.getItem('userName');
-    return this.httpClient.get<Child>(url);
+  getChildByParent() {
+    return this.httpClient.get('http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children/'
+    +  localStorage.getItem('userName'));
+    // console.log(url);
   }
+
+//   getChildByParent(): Observable<Child []> {
+//     // return this.httpClient
+//     //   .get<Child>(`${this.endPoint}/${id}`, this.httpOptions)
+//     //   .pipe(catchError(this.handleException));
+
+//     const url = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children' + '/' + localStorage.getItem('userName');
+//     return this.httpClient.get<Child []>(url);
+//   }
 
   getAllChildren(): Observable<Child []> {
 
     const url = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children' + '/' + localStorage.getItem('userName');
-
+    console.log(url);
     return this.httpClient
       .get<Child []>(`${this.endPoint}`, this.httpOptions)
       .pipe(catchError(this.handleException));

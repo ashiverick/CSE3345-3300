@@ -25,11 +25,10 @@ export class ChildDetailComponent implements OnInit {
 
   getChild(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.childService.getChildByParent(localStorage.getItem('userName')).subscribe(child => this.child = child);
+    this.childService.getChildByParent().subscribe(child => this.child = child);
   }
 
   goBack(): void {
     this.location.back();
   }
-
 }

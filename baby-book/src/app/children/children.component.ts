@@ -9,7 +9,8 @@ import { ChildService } from '../child.service';
   styleUrls: ['./children.component.css']
 })
 export class ChildrenComponent implements OnInit {
-  children: Child[];
+  children: Child;
+  childrenAr: Child[];
 
   constructor(private childService: ChildService) { }
 
@@ -18,7 +19,6 @@ export class ChildrenComponent implements OnInit {
   }
 
   getChildren(): void {
-    this.childService.getAllChildren().subscribe(children => this.children = children);
+    this.childService.getChildByParent().subscribe(children => this.children = children);
   }
-
 }
