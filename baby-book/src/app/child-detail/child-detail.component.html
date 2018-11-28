@@ -2,11 +2,11 @@
   <div *ngFor="let child of children">
     <div *ngIf="child.id == ID">
       <div class="jumbotron jumbotron-fluid clearfix">
-        <img src="https://cdn.discordapp.com/avatars/218183356074950657/f307ddc34a3f9e54447d82c220e190b2.png" id="profile" alt="Profile Photo" class="float-left">
+        <img src="{{ child.profilePicture }} " id="profile" alt="Profile Photo" class="float-left">
           <h2 class="display-4"> {{ child.firstName }} {{ child.lastName }} </h2>
           <p class="text-muted"> {{ child.gender }} <br> {{ child.birthday }} </p>
       </div>
-      <!-- <app-post></app-post> -->
+      <app-post></app-post>
     </div>
   </div>
 </div>

@@ -13,6 +13,11 @@ import { LoginComponent } from './login/login.component';
 import { ModifyAccountComponent } from './modify-account/modify-account.component';
 import { AlertComponent } from './alert/alert.component';
 import { JwtInterceptor } from './domain/helpers/jwt.interceptor';
+import { ChildService } from './child.service';
+import { PostService } from './post.service';
+import { UserService } from './user.service';
+import { AlertService } from './alert.service';
+import { AuthServiceService } from './auth-service.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +37,11 @@ import { JwtInterceptor } from './domain/helpers/jwt.interceptor';
     HttpClientModule
   ],
   providers: [
+    ChildService,
+    PostService,
+    UserService,
+    AlertService,
+    AuthServiceService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [ AppComponent ]
