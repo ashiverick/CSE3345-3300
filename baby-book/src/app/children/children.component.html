@@ -1,5 +1,6 @@
-<ul class="children">
-  <li *ngFor="let child of children">
+<ul class="children d-flex">
+  <li *ngFor="let child of children" class="mx-auto">
+    <br>
     <a [routerLink]="['/detail', child.id]">
     <!-- <a routerLink="/detail/2"> -->
       <span class="badge">{{child.firstName}}</span>
