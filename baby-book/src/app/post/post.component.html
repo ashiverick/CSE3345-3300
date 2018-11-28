@@ -48,8 +48,10 @@
   <div class="card mb-3" *ngFor="let post of posts">
     <div class="card-body bg-light">
       <blockquote class="blockquote mb-0">
-        <img src="{{ post.photo }}" id="postPhoto" class="float-left" alt="photo" *ngIf="post.type == 'image'">
-        <video src="{{ post.photo }}" id="postPhoto" class="float-left" alt="video" *ngIf="post.type == 'video'"></video>
+        <img src="{{ post.photo }}" id="postPhoto" class="float-left" alt="photo" *ngIf="post.type === 'image'">
+        <video id="postVideo" class="float-left" autoplay controls loop alt="video" *ngIf="post.type === 'video'">
+          <source src="{{ post.photo }}">
+        </video>
         <button type="button" id="delBtn" class="btn btn-danger float-right" (click)="deletePost(post.id)">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -60,7 +62,7 @@
       </blockquote>
     </div>
 
-    <div class="h5" *ngIf="posts === undefined || posts.length == 0">
+    <div class="h5" *ngIf="posts === undefined || posts.length === 0">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-light">
           <li class="breadcrumb-item">Add your first post to BabyBook!</li>

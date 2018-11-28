@@ -3,7 +3,6 @@ import { PostService } from '../post.service';
 import { Post } from '../post';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-post',
@@ -76,8 +75,9 @@ export class PostComponent implements OnInit, OnDestroy {
         this.posts[i].id = posts[i].PostID;
         this.posts[i].date = posts[i].postdate;
         this.posts[i].photo = posts[i].photoID;
-        this.posts[i].type = posts[i].type;
+        this.posts[i].type = posts[i].contentType;
       }
+      console.log(this.posts);
       this.posts = posts;
     });
   }
