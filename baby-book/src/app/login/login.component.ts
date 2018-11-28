@@ -3,9 +3,6 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 import { AuthServiceService } from '../auth-service.service';
 import { Token } from '../token';
-// import { disableDebugTools } from '@angular/platform-browser';
-// import { AlertComponent } from '../alert/alert.component';
-// import { Alert } from '../alert';
 import { AlertService } from '../alert.service';
 import { UserService } from '../user.service';
 import { first } from 'rxjs/operators';
@@ -16,7 +13,6 @@ import { NgForm } from '@angular/forms';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
-  // encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 @ViewChild('f') signupForm: NgForm;

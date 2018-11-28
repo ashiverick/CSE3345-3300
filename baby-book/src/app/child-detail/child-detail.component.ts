@@ -31,9 +31,6 @@ export class ChildDetailComponent implements OnInit {
   initChildren(): void {
     this.childService.getChildByParent().subscribe(children => {
       this.children = children;
-      // console.log(children);
-      // console.log(this.children);
-      // console.log(Object.keys(this.children).length);
       for (let i = 0; i < Object.keys(this.children).length; i ++) {
         this.children[i].id = children[i].ChildID;
         this.children[i].firstName = children[i].firstName;
@@ -44,7 +41,6 @@ export class ChildDetailComponent implements OnInit {
         this.children[i].profilePicture = children[i].photoID;
       }
     });
-
   }
 
   goBack(): void {

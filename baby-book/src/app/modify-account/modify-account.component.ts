@@ -63,6 +63,7 @@ export class ModifyAccountComponent implements OnInit {
     console.log('child added');
 
     // still need this to close a modal
+    // this.router.navigateByUrl('/dashboard');
     window.location.reload();
   }
 
@@ -87,6 +88,7 @@ export class ModifyAccountComponent implements OnInit {
     console.log('child deleted');
 
     // still need this to close a modal
+    // this.router.navigateByUrl('/dashboard');
     window.location.reload();
   }
 
@@ -100,7 +102,6 @@ export class ModifyAccountComponent implements OnInit {
     );
     this.postForm.reset();
     console.log('password updated');
-    // window.location.reload();
   }
 
   getChildren() {

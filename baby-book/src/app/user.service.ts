@@ -40,8 +40,8 @@ export class UserService {
 
   deleteChild(id: any): Observable<Child> {
     return this.httpClient
-      .delete<Child>(`${this.endPoint}/deleteChild/` + id, this.httpOptions)
-      .pipe(catchError(this.handleException));
+      .delete<Child>(`${this.endPoint}/deleteChild/` + id, this.httpOptions);
+      // .pipe(catchError(this.handleException));
   }
 
   updatePassword(user: any, data: any): Observable<User> {
@@ -52,7 +52,6 @@ export class UserService {
   protected handleException(exception: any) {
     // tslint:disable-next-line:no-var-keyword prefer-const
     var message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
-    // alert('Password updated');
     return Observable.throw(exception);
   }
 }

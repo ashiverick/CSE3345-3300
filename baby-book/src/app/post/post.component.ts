@@ -96,17 +96,11 @@ export class PostComponent implements OnInit, OnDestroy {
       milestone: this.mileNum
     };
 
-    console.log(this.post);
-
     this.postService.addPost(this.post).subscribe(
       (response) => this.getPosts(),
       (error) => this.getPosts()
     );
     this.postForm.reset();
-
-    // this doesn't work
-    // this.router.navigateByUrl('/detail/' + this.ID);
-    // window.location.reload();
   }
 
   deletePost(item: any) {
@@ -114,7 +108,5 @@ export class PostComponent implements OnInit, OnDestroy {
       (response) => this.getPosts(),
       (error) => this.getPosts()
     );
-    // this.router.navigateByUrl('/detail/' + this.ID);
-    // window.location.reload();
   }
 }
