@@ -40,3 +40,8 @@ textarea {
 #delBtn {
   margin-left: .5em;
 }
+#postPhoto {
+  max-width: 15rem;
+  max-height: 15rem;
+  margin-right: 1rem;
+}

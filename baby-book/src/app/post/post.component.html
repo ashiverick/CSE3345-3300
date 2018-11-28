@@ -1,45 +1,45 @@
 <div class="container">
-    <div class="card">
-      <h5 class="card-header bg-secondary text-white">Add Post</h5>
-      <div class="card-body">
-        <form (onSubmit)="addPost()" #f="ngForm">
-          <textarea name="link" id="link" cols="32" rows="1" placeholder="Link your media here." ngModel></textarea>
+  <div class="card">
+    <h5 class="card-header bg-secondary text-white">Add Post</h5>
+    <div class="card-body">
+      <form (onSubmit)="addPost()" #f="ngForm">
+        <textarea name="link" id="link" cols="32" rows="1" placeholder="Link your media here." ngModel></textarea>
 
-          <textarea name="newPost" cols="30" rows="8" placeholder="Enter your post here." ngModel></textarea>
-          <div>
+        <textarea name="newPost" cols="30" rows="8" placeholder="Enter your post here." ngModel></textarea>
+        <div>
 
 
-          </div>
-          <div class="form-row">
-            <div class="col">
-              <label for="sel1">Post Type</label>
-              <select class="form-control text-muted" name="type" id="sel1" ngModel>
-                <option hidden>Post Type</option>
-                <option>Video</option>
-                <option>Text</option>
-                <option>Image</option>
-              </select>
-            </div>
-
-            <div class="col">
-              <label for="sel2">Milestone</label>
-              <select class="form-control text-muted" name="milestone" id="sel2" ngModel>
-                <option hidden>Milestone</option>
-                <option>Birthday</option>
-                <option>Crawling</option>
-                <option>First Steps</option>
-                <option>First Words</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-          </div>
-        </form>
-        <div class="clearfix">
-          <button type="submit" class="btn btn-primary float-left" (click)="addPost()">Submit</button>
         </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="sel1">Post Type</label>
+            <select class="form-control text-muted" name="type" id="sel1" ngModel>
+              <option hidden>Post Type</option>
+              <option>Video</option>
+              <option>Text</option>
+              <option>Image</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="sel2">Milestone</label>
+            <select class="form-control text-muted" name="milestone" id="sel2" ngModel>
+              <option hidden>Milestone</option>
+              <option>Birthday</option>
+              <option>Crawling</option>
+              <option>First Steps</option>
+              <option>First Words</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+        </div>
+      </form>
+      <div class="clearfix">
+        <button type="submit" class="btn btn-primary float-left" (click)="addPost()">Submit</button>
       </div>
     </div>
+  </div>
 
     <div class="h1">
       <div class="row p-3">
@@ -47,18 +47,18 @@
       </div>
     </div>
 
-    <div class="card mb-3" *ngFor="let post of posts">
-      <div class="card-body bg-light">
-        <blockquote class="blockquote mb-0">
-          <button type="button" id="delBtn" class="btn btn-danger float-right" (click)="deletePost(post.id)">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-muted d-inline float-right"> {{ post.date | date:'short' }}</div>
-          <div class="row d-inline p-3">
-            <div class="text-muted d-inline"> {{ post.body }} </div>
-          </div>
-        </blockquote>
-      </div>
+  <div class="card mb-3" *ngFor="let post of posts">
+    <div class="card-body bg-light">
+      <blockquote class="blockquote mb-0">
+        <img src="{{ post.photo }}" id="postPhoto" class="float-left" alt="">
+        <button type="button" id="delBtn" class="btn btn-danger float-right" (click)="deletePost(post.id)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="text-muted d-inline float-right"> {{ post.date | date:'short' }}</div>
+        <div class="row d-inline p-3">
+          <div class="text-muted d-inline"> {{ post.body }} </div>
+        </div>
+      </blockquote>
     </div>
 
     <div class="h5" *ngIf="posts === undefined || posts.length == 0">

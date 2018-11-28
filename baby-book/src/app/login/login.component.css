@@ -17,6 +17,7 @@ main > .active {
 .card{
   width: 18rem;
   padding:0;
+  margin: 1em;
 }
 
 body{

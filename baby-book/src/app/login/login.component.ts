@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { AuthServiceService } from '../auth-service.service';
@@ -9,6 +9,8 @@ import { Token } from '../token';
 import { AlertService } from '../alert.service';
 import { UserService } from '../user.service';
 import { first } from 'rxjs/operators';
+import { ServerService } from '../domain/services/server.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -17,23 +19,46 @@ import { first } from 'rxjs/operators';
   // encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+@ViewChild('f') signupForm: NgForm;
+
   username: string;
   password: string;
   token: Token;
-
-  @Input()
-  user: User;
+  user;
+  loading = false;
 
   constructor(
     private router: Router,
     private authService: AuthServiceService,
     private alertService: AlertService,
-    private userService: UserService
+    private userService: UserService,
+    private serverService: ServerService
   ) { }
 
-  ngOnInit() {
-    this.authService.logout();
-    this.user = { email: '', userName: '', password: '', children: [] };
+  addUser(form: NgForm) {
+    this.loading = true;
+    this.user = {
+      username: this.signupForm.value.username,
+      password: this.signupForm.value.password,
+      email: this.signupForm.value.email
+    };
+    console.log(this.user);
+
+    this.serverService.storeUser(this.user).subscribe(
+    temp => {
+      console.log(this.user);
+    },
+    data => {
+      this.router.navigate(['../login']);
+      window.location.reload();
+    }
+    );
+
+    console.log('user created');
+
+    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
+    // this.router.navigateByUrl('/login');
+    // window.location.reload();
   }
 
   public onLoginClick() {
@@ -42,18 +67,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['../dashboard']);
+          window.location.reload();
         },
         error => {
           console.log(localStorage.getItem('currentUser'));
           this.alertService.error('Authentication Error! :(');
         }
       );
-
-    // if (localStorage.getItem('currentUser')) { this.router.navigate(['../dashboard']);
-    // } else {
-    //   console.log(localStorage.getItem('currentUser'));
-    //   this.alertService.error('Authentication Error! :(');
-    // }
   }
 
   public onLogoutClick() {
@@ -66,13 +86,7 @@ export class LoginComponent implements OnInit {
       this.alertService.info('No profile is currently signed in!');
     }
   }
-
-  public onCreateAccountClick() {
-    this.userService.addAccount(this.user).subscribe(nothing => {
-      this.userService.addAccount(this.user);
-      this.user.post(this.user);
-      console.log(nothing);
-      this.user = { email: '', userName: '', password: '', children: [] };
-    });
+  ngOnInit() {
+    this.authService.logout();
   }
 }
