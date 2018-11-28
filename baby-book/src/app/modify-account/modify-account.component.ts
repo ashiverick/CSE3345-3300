@@ -19,6 +19,7 @@ export class ModifyAccountComponent implements OnInit {
   @Input()
   user: User;
   newChild;
+  newPassword;
   deletingChild: Child;
   children: Child;
 
@@ -66,7 +67,10 @@ export class ModifyAccountComponent implements OnInit {
   }
 
   public updateAccount() {
-    // figure out how to update the account information
+    this.newPassword = {
+      password: this.postForm.value.password
+    };
+    // this.userService.
   }
 
   getChildren() {

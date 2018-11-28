@@ -2,9 +2,11 @@
   <div *ngFor="let child of children">
     <div *ngIf="child.id == ID">
       <div class="jumbotron jumbotron-fluid clearfix">
-        <img src="{{ child.profilePicture }} " id="profile" alt="Profile Photo" class="float-left">
+        <img src="{{ child.profilePicture }}" id="profile" alt="Profile Photo" class="float-left">
           <h2 class="display-4"> {{ child.firstName }} {{ child.lastName }} </h2>
-          <p class="text-muted"> {{ child.gender }} <br> {{ child.birthday }} </p>
+
+          <p class="text-muted"> {{ child.gender }} <br> Born: {{ child.birthday }} </p>
+          <p class="text-muted"> {{ child.about }} </p>
       </div>
       <app-post></app-post>
     </div>

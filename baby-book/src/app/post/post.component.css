@@ -8,7 +8,7 @@ body {
   margin: 2em;
 }
 body, input[text], button {
-  color: crimson;
+  color: white;
   font-family: Cambria, Georgia;
 }
 button:hover {
@@ -36,4 +36,7 @@ textarea {
 }
 #link {
   margin-bottom: .5em;
+}
+#delBtn {
+  margin-left: .5em;
 }

@@ -36,13 +36,6 @@ export class PostComponent implements OnInit, OnDestroy {
     console.log('destroyed');
   }
 
-  getPosts() {
-    this.postService.getPosts(this.ID).subscribe(posts => {
-      this.posts = posts;
-      console.log(posts);
-    });
-  }
-
   checkType() {
     this.types = this.postForm.value.type;
     if (this.types === 'Video') {
@@ -72,6 +65,16 @@ export class PostComponent implements OnInit, OnDestroy {
     if (this.milestones === 'Other') {
       this.mileNum = 5;
     }
+  }
+  getPosts() {
+    this.postService.getPosts(this.ID).subscribe(posts => {
+      this.posts = posts;
+      for (let i = 0; i < Object.keys(this.posts).length; i++) {
+        this.posts[i].id = posts[i].PostID;
+        this.posts[i].date = posts[i].postdate;
+      }
+      console.log(this.posts);
+    });
   }
 
   addPost() {

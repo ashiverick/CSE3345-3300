@@ -4,17 +4,15 @@
       <h3>Modify Account</h3>
     </div>
     <div class="card-body">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputUsername">New Username</label>
-          <input type="text" class="form-control" id="exampleInputUsername" placeholder="Enter new username">
-        </div>
+
+      <form (ngSubmit)="updateAccount()" #f="ngForm">
         <div class="form-group">
           <label for="exampleInputPassword1">New Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ngModel>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="updateAccount()" data-dismiss="modal"> Update </button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal"> Update </button>
       </form>
+
     </div>
   </div>
 
@@ -42,50 +40,38 @@
         </button>
       </div>
       <div class="modal-body">
-        <form (onSubmit)="onAddChild()" #f="ngForm">
+        <form >
           <div class="form-group row">
             <label for="firstName"> First Name </label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="firstName" name="firstname" ngModel>
+              <input type="text" class="form-control" id="firstName" [(ngModel)]="newChild.firstName">
             </div>
           </div>
           <div class="form-group row">
             <label for="lastName"> Last Name </label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="lastName" name="lastname" ngModel>
+              <input type="text" class="form-control" id="lastName" [(ngModel)]="newChild.lastName">
             </div>
           </div>
           <div class="form-group row">
             <label for="radio1"> Gender </label>
             <div class="col-sm-8">
-              <input type="radio" name="gender" value="male" id="radio1" ngModel> Male<br>
-              <input type="radio" name="gender" value="female" ngModel> Female<br>
-              <input type="radio" name="gender" value="other" ngModel> Other<br>
+              <input type="radio" name="gender" value="male" id="radio1" [(ngModel)]="newChild.gender"> Male<br>
+              <input type="radio" name="gender" value="female" [(ngModel)]="newChild.gender"> Female<br>
+              <input type="radio" name="gender" value="other" [(ngModel)]="newChild.gender"> Other<br>
             </div>
           </div>
           <div class="form-group date row">
             <label for="birthday"> Birthday </label>
             <div class="col-sm-8">
-              <input type="date" name="bday" id="birthday" ngModel>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="firstName"> About Me! </label>
-            <div class="col-sm-8">
-              <input type="text-area" class="form-control" id="aboutMe" name="aboutme" ngModel>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="profilePic"> Add a Picture! </label>
-            <div class="col-sm-8">
-              <input type="text" name="profilepic" class="form-control" id="profilePic" ngModel>
+              <input type="date" name="bday" id="birthday" [(ngModel)]="newChild.birthday">
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onCancelClick()">Cancel</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="onAddChild()">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" (click)="onAddChild()" data-dismiss="modal">Submit</button>
       </div>
     </div>
   </div>
@@ -116,7 +102,6 @@
     </div>
   </div>
 </div>
-
 <div class="footer">
   <button class="btn btn-secondary" (click)="goBack()">go back</button>
 </div>

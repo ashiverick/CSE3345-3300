@@ -6,5 +6,6 @@ export class Child {
   lastName?: string;
   birthday?: string;
   gender?: string;
+  about?: string;
   profilePicture?: string;
 }
