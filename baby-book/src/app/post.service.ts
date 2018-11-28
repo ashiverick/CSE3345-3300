@@ -30,11 +30,6 @@ export class PostService {
     return this.httpClient.delete(`${this.endPoint}/deletePost/` + id, this.httpOptions);
   }
 
-  // add(id: any): Observable<Post> {
-  //   return this.httpClient
-  //     .post<Post>(`${this.endPoint}/` + id, this.httpOptions)
-  //     .pipe(catchError(this.handleException));
-  // }
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
     alert(message);

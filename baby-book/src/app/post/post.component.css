@@ -8,7 +8,7 @@ body {
   margin: 2em;
 }
 body, input[text], button {
-  color: crimson;
+  color: white;
   font-family: Cambria, Georgia;
 }
 button:hover {
@@ -24,4 +24,19 @@ textarea {
 }
 .card {
   background: clear;
+}
+
+#sel1 {
+  margin-bottom: .5em;
+  transform: scale(.95, 1);
+}
+#sel2 {
+  margin-bottom: .5em;
+  transform: scale(.95, 1);
+}
+#link {
+  margin-bottom: .5em;
+}
+#delBtn {
+  margin-left: .5em;
 }
