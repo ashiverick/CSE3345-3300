@@ -25,3 +25,15 @@ textarea {
 .card {
   background: clear;
 }
+
+#sel1 {
+  margin-bottom: .5em;
+  transform: scale(.95, 1);
+}
+#sel2 {
+  margin-bottom: .5em;
+  transform: scale(.95, 1);
+}
+#link {
+  margin-bottom: .5em;
+}
