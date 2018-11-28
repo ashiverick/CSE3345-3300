@@ -13,8 +13,8 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./login.component.css']
+  // encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
   username: string;

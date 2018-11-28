@@ -40,18 +40,22 @@ export class ModifyAccountComponent implements OnInit {
   public onAddChild() {
     this.newChild = {
       parent: localStorage.getItem('userName'),
-      firstName: 'string',
-      lastName: 'string',
-      gender: 'string',
-      birthday: 'string',
-      about: 'string',
-      photoID: 'string'
+      firstName: this.postForm.value.firstname,
+      lastName: this.postForm.value.lastname,
+      gender: this.postForm.value.gender,
+      birthday: this.postForm.value.bday,
+      about: this.postForm.value.aboutme,
+      photoID: this.postForm.value.profilepic
     };
 
     this.userService.addChild(this.newChild).subscribe(
       (nothing) => this.getChildren(),
       (error) => console.log(error)
     );
+    this.postForm.reset();
+  }
+
+  public onCancelClick() {
     this.postForm.reset();
   }
 
