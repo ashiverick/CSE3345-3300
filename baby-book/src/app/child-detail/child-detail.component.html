@@ -1,4 +1,4 @@
-<div>
+<div class="body">
   <div *ngFor="let child of children">
     <div *ngIf="child.id == ID">
       <div class="jumbotron jumbotron-fluid clearfix">
@@ -11,7 +11,7 @@
       <app-post></app-post>
     </div>
   </div>
-
   <div>
     <button (click)="goBack()">go back</button>
   </div>
+</div>

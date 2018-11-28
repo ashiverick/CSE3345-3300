@@ -15,8 +15,8 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./login.component.css']
+  // encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 @ViewChild('f') signupForm: NgForm;
@@ -44,15 +44,21 @@ export class LoginComponent implements OnInit {
     };
     console.log(this.user);
 
-    this.serverService.storeUser(this.user).subscribe( temp => {
+    this.serverService.storeUser(this.user).subscribe(
+    temp => {
       console.log(this.user);
-    });
+    },
+    data => {
+      this.router.navigate(['../login']);
+      window.location.reload();
+    }
+    );
 
     console.log('user created');
 
     // DOESNT CLOSE MODAL JUST REFRESHES PAGE
-    this.router.navigateByUrl('/login');
-    window.location.reload();
+    // this.router.navigateByUrl('/login');
+    // window.location.reload();
   }
 
   public onLoginClick() {

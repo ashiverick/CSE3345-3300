@@ -66,6 +66,10 @@ export class ModifyAccountComponent implements OnInit {
     window.location.reload();
   }
 
+  public onCancelClick() {
+    this.postForm.reset();
+  }
+
   public onDeleteChild(item: any) {
     this.deletingChild = this.deleteForm.value.deletelist;
     console.log(this.deletingChild);

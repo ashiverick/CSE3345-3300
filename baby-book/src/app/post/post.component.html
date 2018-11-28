@@ -41,11 +41,11 @@
     </div>
   </div>
 
-  <div class="h1">
-    <div class="row p-3">
-      Posts
+    <div class="h1">
+      <div class="row p-3">
+        Posts
+      </div>
     </div>
-  </div>
 
   <div class="card mb-3" *ngFor="let post of posts">
     <div class="card-body bg-light">
@@ -60,13 +60,12 @@
         </div>
       </blockquote>
     </div>
-  </div>
 
-  <div class="h5" *ngIf="posts === undefined || posts.length == 0">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb bg-light">
-        <li class="breadcrumb-item">Add your first post to BabyBook!</li>
-      </ol>
-    </nav>
+    <div class="h5" *ngIf="posts === undefined || posts.length == 0">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light">
+          <li class="breadcrumb-item">Add your first post to BabyBook!</li>
+        </ol>
+      </nav>
+    </div>
   </div>
-</div>
