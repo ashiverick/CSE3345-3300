@@ -70,13 +70,14 @@ export class PostComponent implements OnInit, OnDestroy {
   }
   getPosts() {
     this.postService.getPosts(this.ID).subscribe(posts => {
+      console.log('getting posts');
       this.posts = posts;
       for (let i = 0; i < Object.keys(this.posts).length; i++) {
         this.posts[i].id = posts[i].PostID;
         this.posts[i].date = posts[i].postdate;
         this.posts[i].photo = posts[i].photoID;
       }
-      console.log(this.posts);
+      this.posts = posts;
     });
   }
 
@@ -99,20 +100,21 @@ export class PostComponent implements OnInit, OnDestroy {
 
     this.postService.addPost(this.post).subscribe(
       (response) => this.getPosts(),
-      (error) => console.log(error)
+      (error) => this.getPosts()
     );
     this.postForm.reset();
 
     // this doesn't work
-    this.router.navigateByUrl('/detail/' + this.ID);
-    window.location.reload();
+    // this.router.navigateByUrl('/detail/' + this.ID);
+    // window.location.reload();
   }
 
   deletePost(item: any) {
-    this.postService.deletePost(item).subscribe(id => {
-      this.getPosts();
-    });
-    this.router.navigateByUrl('/detail/' + this.ID);
-    window.location.reload();
+    this.postService.deletePost(item).subscribe(
+      (response) => this.getPosts(),
+      (error) => this.getPosts()
+    );
+    // this.router.navigateByUrl('/detail/' + this.ID);
+    // window.location.reload();
   }
 }

@@ -55,14 +55,15 @@ export class ModifyAccountComponent implements OnInit {
 
     console.log(this.newChild);
 
-    this.userService.addChild(this.newChild).subscribe(temp => {
-    });
-    this.postForm.reset();
+    this.userService.addChild(this.newChild).subscribe(
+      (response) => this.router.navigateByUrl('/dashboard'),
+      (error) => this.router.navigateByUrl('/dashboard')
+    );
+    this.childForm.reset();
     console.log('child added');
 
-    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
+    // still need this to close a modal
     window.location.reload();
-    this.router.navigateByUrl('/dashboard');
   }
 
   public onDeleteChild(item: any) {
@@ -74,13 +75,14 @@ export class ModifyAccountComponent implements OnInit {
       }
     }
     console.log(this.ID);
-    this.userService.deleteChild(this.ID).subscribe(nothing => {
-    });
-
+    this.userService.deleteChild(this.ID).subscribe(
+      (response) => this.router.navigateByUrl('/dashboard'),
+      (error) => this.router.navigateByUrl('/dashboard')
+    );
+    this.deleteForm.reset();
     console.log('child deleted');
 
-    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
-    this.router.navigateByUrl('/dashboard');
+    // still need this to close a modal
     window.location.reload();
   }
 
@@ -88,14 +90,13 @@ export class ModifyAccountComponent implements OnInit {
     this.data = {
       password: this.postForm.value.password
     };
-    this.userService.updatePassword(localStorage.getItem('userName'), this.data).subscribe(temp => {
-    });
+    this.userService.updatePassword(localStorage.getItem('userName'), this.data).subscribe(
+      (response) => this.router.navigateByUrl('/dashboard'),
+      (error) => this.router.navigateByUrl('/dashboard')
+    );
     this.postForm.reset();
     console.log('password updated');
-
-    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
-    this.router.navigateByUrl('/modify-account');
-    window.location.reload();
+    // window.location.reload();
   }
 
   getChildren() {
