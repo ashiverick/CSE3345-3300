@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Child } from '../child';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { ChildService } from '../child.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-modify-account',
@@ -12,17 +14,20 @@ import { UserService } from '../user.service';
   styleUrls: ['./modify-account.component.css']
 })
 export class ModifyAccountComponent implements OnInit {
+  @ViewChild ('f') postForm: NgForm;
 
   @Input()
   user: User;
-  newChild: Child;
+  newChild;
   deletingChild: Child;
+  children: Child;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private location: Location,
-    private userService: UserService
+    private userService: UserService,
+    private childService: ChildService
     ) { }
 
   ngOnInit() {
@@ -33,25 +38,37 @@ export class ModifyAccountComponent implements OnInit {
   }
 
   public onAddChild() {
-    this.userService.addChild(this.newChild).subscribe( nothing => {
-      this.userService.addChild(this.newChild);
-      console.log(nothing);
-      this.newChild.birthday = new Date();
-      this.newChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: ''};
-    });
+    this.newChild = {
+      parent: localStorage.getItem('userName'),
+      firstName: 'string',
+      lastName: 'string',
+      gender: 'string',
+      birthday: 'string',
+      about: 'string',
+      photoID: 'string'
+    };
+
+    this.userService.addChild(this.newChild).subscribe(
+      (nothing) => this.getChildren(),
+      (error) => console.log(error)
+    );
+    this.postForm.reset();
   }
 
-  public onDeleteChild() {
-    this.userService.deleteChild(this.deletingChild).subscribe( nothing => {
+  public onDeleteChild(item: any) {
+    this.userService.deleteChild(item).subscribe( nothing => {
       this.userService.deleteChild(this.deletingChild);
-      console.log(nothing);
-      this.deletingChild.birthday = new Date();
-      this.deletingChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: ''};
     });
   }
 
   public updateAccount() {
     // figure out how to update the account information
+  }
+
+  getChildren() {
+    this.childService.getChildByParent().subscribe(children => {
+      this.children = children;
+    });
   }
 
 }
