@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../post';
-import { Child } from '../child';
-import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -13,11 +11,14 @@ import { NgForm } from '@angular/forms';
 })
 
 export class PostComponent implements OnInit, OnDestroy {
-
   @ViewChild ('f') postForm: NgForm;
   post;
   posts: Post;
   ID: number;
+  types;
+  milestones;
+  typeNum;
+  mileNum;
 
   constructor(
     public postService: PostService,
@@ -30,6 +31,7 @@ export class PostComponent implements OnInit, OnDestroy {
     });
     this.getPosts();
   }
+
   ngOnDestroy() {
     console.log('destroyed');
   }
@@ -41,22 +43,60 @@ export class PostComponent implements OnInit, OnDestroy {
     });
   }
 
+  checkType() {
+    this.types = this.postForm.value.type;
+    if (this.types === 'Video') {
+      this.typeNum = 1;
+    }
+    if (this.types === 'Text') {
+      this.typeNum = 2;
+    }
+    if (this.types === 'Image') {
+      this.typeNum = 3;
+    }
+  }
+  checkMilestone() {
+    this.milestones = this.postForm.value.milestone;
+    if (this.milestones === 'Birthday') {
+      this.mileNum = 1;
+    }
+    if (this.milestones === 'Crawling') {
+      this.mileNum = 2;
+    }
+    if (this.milestones === 'First Steps') {
+      this.mileNum = 3;
+    }
+    if (this.milestones === 'First Words') {
+      this.mileNum = 4;
+    }
+    if (this.milestones === 'Other') {
+      this.mileNum = 5;
+    }
+  }
+
   addPost() {
+    this.typeNum = 0;
+    this.mileNum = 0;
+    this.checkType();
+    this.checkMilestone();
+
     this.post = {
       ChildID: this.ID,
       username: localStorage.getItem('userName'),
-      body: 'form data',
-      likes: 'likes',
-      photoID: 'string',
-      content: 'enum',
-      milestone: 'enum'
+      body: this.postForm.value.newPost,
+      photoID: this.postForm.value.link,
+      content: this.typeNum,
+      milestone: this.mileNum
     };
+
+    console.log(this.post);
 
     this.postService.addPost(this.post).subscribe(
       (response) => this.getPosts(),
       (error) => console.log(error)
     );
     this.postForm.reset();
+    // window.location.reload();
   }
 
   deletePost(item: any) {

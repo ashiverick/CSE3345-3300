@@ -2,8 +2,28 @@
   <div class="card">
       <h5 class="card-header bg-secondary text-white">Add Post</h5>
       <div class="card-body">
-        <div class="form-input">
-        </div>
+        <form (onSubmit)="addPost()" #f="ngForm">
+          <textarea name="link" id="link"cols="32" rows="1" placeholder="Link your media here." ngModel></textarea>
+
+          <textarea name="newPost" cols="30" rows="8" placeholder="Enter your post here." ngModel></textarea>
+          <div class="form-row">
+            <select class="form-control text-muted w-50" name="type" id="sel1" ngModel>
+              <option hidden>Post Type</option>
+              <option>Video</option>
+              <option>Text</option>
+              <option>Image</option>
+            </select>
+
+            <select class="form-control text-muted w-50" name="milestone" id="sel2" ngModel>
+              <option hidden>Milestone</option>
+              <option>Birthday</option>
+              <option>Crawling</option>
+              <option>First Steps</option>
+              <option>First Words</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </form>
         <div class="clearfix">
           <button type="submit" class="btn btn-primary float-left" (click)="addPost()">Submit</button>
         </div>
@@ -21,7 +41,7 @@
       <blockquote class="blockquote mb-0">
         <div class="row d-inline p-3">
           <div class="text-muted d-inline"> {{ post.body }} </div>
-          <div class="text-muted d-inline float-right"> {{ post.date | date }} </div>
+          <div class="text-muted d-inline float-right"> <span>{{ post.date | date:'short' }}</span> </div>
         </div>
       </blockquote>
     </div>

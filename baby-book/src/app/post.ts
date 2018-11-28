@@ -1,6 +1,6 @@
 export class Post {
   userName?: string;
-  date?: Date;
+  date?: string;
   comment?: string;
 }
 
