@@ -37,3 +37,7 @@ body{
 button {
   margin: .5em;
 }
+
+.loggedIn {
+  display:none;
+}
