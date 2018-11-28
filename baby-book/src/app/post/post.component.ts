@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../post';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-post',
@@ -21,6 +22,7 @@ export class PostComponent implements OnInit, OnDestroy {
   mileNum;
 
   constructor(
+    public router: Router,
     public postService: PostService,
     private route: ActivatedRoute,
     ) { }
@@ -72,6 +74,7 @@ export class PostComponent implements OnInit, OnDestroy {
       for (let i = 0; i < Object.keys(this.posts).length; i++) {
         this.posts[i].id = posts[i].PostID;
         this.posts[i].date = posts[i].postdate;
+        this.posts[i].photo = posts[i].photoID;
       }
       console.log(this.posts);
     });
@@ -99,12 +102,17 @@ export class PostComponent implements OnInit, OnDestroy {
       (error) => console.log(error)
     );
     this.postForm.reset();
-    // window.location.reload();
+
+    // this doesn't work
+    this.router.navigateByUrl('/detail/' + this.ID);
+    window.location.reload();
   }
 
   deletePost(item: any) {
     this.postService.deletePost(item).subscribe(id => {
       this.getPosts();
     });
+    this.router.navigateByUrl('/detail/' + this.ID);
+    window.location.reload();
   }
 }

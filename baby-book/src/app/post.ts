@@ -3,6 +3,7 @@ export class Post {
   date?: string;
   comment?: string;
   id?: number;
+  photo?: string;
 }
 
 
