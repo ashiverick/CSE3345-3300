@@ -15,12 +15,16 @@ import { NgForm } from '@angular/forms';
 })
 export class ModifyAccountComponent implements OnInit {
   @ViewChild ('f') postForm: NgForm;
+  @ViewChild ('g') childForm: NgForm;
+  @ViewChild ('d') deleteForm: NgForm;
 
   @Input()
   user: User;
   newChild;
-  deletingChild: Child;
+  deletingChild;
   children: Child;
+  data;
+  ID: number;
 
   constructor(
     private router: Router,
@@ -31,6 +35,7 @@ export class ModifyAccountComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.getChildren();
   }
 
   goBack(): void {
@@ -40,35 +45,65 @@ export class ModifyAccountComponent implements OnInit {
   public onAddChild() {
     this.newChild = {
       parent: localStorage.getItem('userName'),
-      firstName: 'string',
-      lastName: 'string',
-      gender: 'string',
-      birthday: 'string',
-      about: 'string',
-      photoID: 'string'
+      firstName: this.childForm.value.firstname,
+      lastName: this.childForm.value.lastname,
+      gender: this.childForm.value.gender,
+      birthday: this.childForm.value.birthday,
+      about: this.childForm.value.about,
+      photoID: this.childForm.value.photo
     };
 
-    this.userService.addChild(this.newChild).subscribe(
-      (nothing) => this.getChildren(),
-      (error) => console.log(error)
-    );
+    console.log(this.newChild);
+
+    this.userService.addChild(this.newChild).subscribe(temp => {
+    });
     this.postForm.reset();
+    console.log('child added');
+
+    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
+    window.location.reload();
+    this.router.navigateByUrl('/dashboard');
   }
 
   public onDeleteChild(item: any) {
-    this.userService.deleteChild(item).subscribe( nothing => {
-      this.userService.deleteChild(this.deletingChild);
+    this.deletingChild = this.deleteForm.value.deletelist;
+    console.log(this.deletingChild);
+    for (let i = 0; i < Object.keys(this.children).length; i ++) {
+      if (this.children[i].firstName === this.deletingChild) {
+         this.ID = this.children[i].id;
+      }
+    }
+    console.log(this.ID);
+    this.userService.deleteChild(this.ID).subscribe(nothing => {
     });
+
+    console.log('child deleted');
+
+    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
+    this.router.navigateByUrl('/dashboard');
+    window.location.reload();
   }
 
-  public updateAccount() {
-    // figure out how to update the account information
+  public updateAccount(form: NgForm) {
+    this.data = {
+      password: this.postForm.value.password
+    };
+    this.userService.updatePassword(localStorage.getItem('userName'), this.data).subscribe(temp => {
+    });
+    this.postForm.reset();
+    console.log('password updated');
+
+    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
+    this.router.navigateByUrl('/modify-account');
+    window.location.reload();
   }
 
   getChildren() {
     this.childService.getChildByParent().subscribe(children => {
       this.children = children;
+      for (let i = 0; i < Object.keys(this.children).length; i ++) {
+        this.children[i].id = children[i].ChildID;
+      }
     });
   }
-
 }

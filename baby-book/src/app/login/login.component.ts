@@ -47,6 +47,12 @@ export class LoginComponent implements OnInit {
     this.serverService.storeUser(this.user).subscribe( temp => {
       console.log(this.user);
     });
+
+    console.log('user created');
+
+    // DOESNT CLOSE MODAL JUST REFRESHES PAGE
+    this.router.navigateByUrl('/login');
+    window.location.reload();
   }
 
   public onLoginClick() {
@@ -55,6 +61,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['../dashboard']);
+          window.location.reload();
         },
         error => {
           console.log(localStorage.getItem('currentUser'));
