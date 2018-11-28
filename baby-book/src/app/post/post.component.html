@@ -1,24 +1,29 @@
 <div class="container">
   <div class="card">
-      <h5 class="card-header bg-secondary text-white">Add Post</h5>
-      <div class="card-body">
-        <form (onSubmit)="addPost()" #f="ngForm">
-          <textarea name="link" id="link"cols="32" rows="1" placeholder="Link your media here." ngModel></textarea>
+    <h5 class="card-header bg-secondary text-white">Add Post</h5>
+    <div class="card-body">
+      <form (onSubmit)="addPost()" #f="ngForm">
+        <textarea name="link" id="link" cols="32" rows="1" placeholder="Link your media here." ngModel></textarea>
 
-          <textarea name="newPost" cols="30" rows="8" placeholder="Enter your post here." ngModel></textarea>
-          <div class="form-row">
+        <textarea name="newPost" cols="30" rows="8" placeholder="Enter your post here." ngModel></textarea>
+        <div>
+
+
+        </div>
+        <div class="form-row">
+          <div class="col">
             <label for="sel1">Post Type</label>
-            <label for="sel2">Milestone</label>
-          </div>
-          <div class="form-row">
-            <select class="form-control text-muted w-50" name="type" id="sel1" ngModel>
+            <select class="form-control text-muted" name="type" id="sel1" ngModel>
               <option hidden>Post Type</option>
               <option>Video</option>
               <option>Text</option>
               <option>Image</option>
             </select>
+          </div>
 
-            <select class="form-control text-muted w-50" name="milestone" id="sel2" ngModel>
+          <div class="col">
+            <label for="sel2">Milestone</label>
+            <select class="form-control text-muted" name="milestone" id="sel2" ngModel>
               <option hidden>Milestone</option>
               <option>Birthday</option>
               <option>Crawling</option>
@@ -27,11 +32,13 @@
               <option>Other</option>
             </select>
           </div>
-        </form>
-        <div class="clearfix">
-          <button type="submit" class="btn btn-primary float-left" (click)="addPost()">Submit</button>
+
         </div>
+      </form>
+      <div class="clearfix">
+        <button type="submit" class="btn btn-primary float-left" (click)="addPost()">Submit</button>
       </div>
+    </div>
   </div>
 
   <div class="h1">
