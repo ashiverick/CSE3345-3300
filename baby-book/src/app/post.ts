@@ -4,6 +4,7 @@ export class Post {
   comment?: string;
   id?: number;
   photo?: string;
+  type?: string;
 }
 
 

@@ -75,6 +75,7 @@ export class PostComponent implements OnInit, OnDestroy {
         this.posts[i].id = posts[i].PostID;
         this.posts[i].date = posts[i].postdate;
         this.posts[i].photo = posts[i].photoID;
+        this.posts[i].type = posts[i].type;
       }
       console.log(this.posts);
     });
