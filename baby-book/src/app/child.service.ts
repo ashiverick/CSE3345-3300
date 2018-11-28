@@ -25,15 +25,6 @@ export class ChildService {
     // console.log(url);
   }
 
-//   getChildByParent(): Observable<Child []> {
-//     // return this.httpClient
-//     //   .get<Child>(`${this.endPoint}/${id}`, this.httpOptions)
-//     //   .pipe(catchError(this.handleException));
-
-//     const url = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children' + '/' + localStorage.getItem('userName');
-//     return this.httpClient.get<Child []>(url);
-//   }
-
   getAllChildren(): Observable<Child []> {
 
     const url = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/children' + '/' + localStorage.getItem('userName');

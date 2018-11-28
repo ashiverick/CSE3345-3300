@@ -40,16 +40,11 @@ export class ChildDetailComponent implements OnInit {
         this.children[i].lastName = children[i].lastName;
         this.children[i].gender = children[i].gender;
         this.children[i].birthday = children[i].birthday;
+        this.children[i].profilePicture = children[i].photoID;
       }
     });
 
-    // console.log(this.children[0].firstName);
   }
-  // getChild(): void {
-  //   // const id = +this.route.snapshot.paramMap.get('id');
-  //   console.log('getting child');
-  //   this.childService.getChildByParent().subscribe(children => this.children = children);
-  // }
 
   goBack(): void {
     this.location.back();

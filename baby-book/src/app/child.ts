@@ -7,5 +7,4 @@ export class Child {
   birthday?: Date;
   gender?: string;
   profilePicture?: string;
-  posts?: Post[];
 }

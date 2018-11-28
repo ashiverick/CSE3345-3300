@@ -37,7 +37,7 @@ export class ModifyAccountComponent implements OnInit {
       this.userService.addChild(this.newChild);
       console.log(nothing);
       this.newChild.birthday = new Date();
-      this.newChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: '', posts: []};
+      this.newChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: ''};
     });
   }
 
@@ -46,7 +46,7 @@ export class ModifyAccountComponent implements OnInit {
       this.userService.deleteChild(this.deletingChild);
       console.log(nothing);
       this.deletingChild.birthday = new Date();
-      this.deletingChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: '', posts: []};
+      this.deletingChild = {id: 0, firstName: '', lastName: '', gender: '', profilePicture: ''};
     });
   }
 
