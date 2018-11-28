@@ -40,6 +40,7 @@ export class ChildDetailComponent implements OnInit {
         this.children[i].lastName = children[i].lastName;
         this.children[i].gender = children[i].gender;
         this.children[i].birthday = children[i].birthday;
+        this.children[i].about = children[i].about;
         this.children[i].profilePicture = children[i].photoID;
       }
     });
