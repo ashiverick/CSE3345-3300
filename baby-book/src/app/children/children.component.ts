@@ -19,6 +19,12 @@ export class ChildrenComponent implements OnInit {
   }
 
   getChildren(): void {
-    this.childService.getChildByParent().subscribe(children => this.children = children);
+    this.childService.getChildByParent().subscribe(children => {
+      this.children = children;
+      // console.log(children);
+      // console.log(this.children);
+    });
+
+    // console.log(this.children);
   }
 }

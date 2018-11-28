@@ -10,22 +10,27 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
-  children: Child[] = [];
+  children: Child;
 
   constructor(
     private childService: ChildService,
     private router: Router) { }
 
   ngOnInit() {
-    this.getChildren();
+    // this.getChildren();
   }
 
   getChildren() {
-    this.childService.getAllChildren()
-      .subscribe(children => this.children = children);
+    this.childService.getChildByParent()
+      .subscribe(children => {
+        this.children = children;
+        console.log(children);
+      });
+    // console.log(this.children);
   }
 
   public onChildClick() {
+    console.log('clicking child');
     this.router.navigate(['../children']);
   }
 }

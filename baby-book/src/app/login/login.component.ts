@@ -65,7 +65,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.alertService.info('No profile is currently signed in!');
     }
-
   }
 
   public onCreateAccountClick() {

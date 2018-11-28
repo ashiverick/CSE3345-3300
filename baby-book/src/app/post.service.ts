@@ -8,12 +8,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PostService {
 
-  protected endPoint = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/post/[{id}]';
+  protected endPoint = 'http://ec2-52-15-123-114.us-east-2.compute.amazonaws.com:8080/api/post/';
 
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      // 'Authorization': 'ashiverick'
     })
   };
 

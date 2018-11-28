@@ -1,10 +1,25 @@
-<div *ngIf="child">
+<!-- <div *ngIf="children">
 
   <img src="babyDefaultProfile.png">
-  <h2>{{child.firstName}} {{child.lastName}}</h2>
-  <h3>{{child.gender}}</h3>
-  <h3>{{child.birthday}}</h3>
+  <h2>{{children.firstName}} {{children.lastName}}</h2>
+  <h3>{{children.gender}}</h3>
+  <h3>{{children.birthday}}</h3>
   <app-post></app-post>
   <button (click)="goBack()">go back</button>
+</div> -->
+<div>
+  <div *ngFor="let child of children">
+    <!-- <span> {{ child.id }} </span> -->
+    <div *ngIf="child.id == 1">
+        <h2> {{ child.firstName }} {{ child.lastName }} </h2>
+        <h3>{{ child.gender }}</h3>
+        <h3>{{ child.birthday }}</h3>
+        <app-post></app-post>
+    </div>
+  </div>
+</div>
 
+
+<div>
+  <button (click)="goBack()">go back</button>
 </div>
