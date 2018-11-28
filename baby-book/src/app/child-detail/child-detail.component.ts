@@ -13,7 +13,7 @@ import { Child } from '../child';
 export class ChildDetailComponent implements OnInit {
   children: Child;
   childComponent: ChildrenComponent;
-  childID: number;
+  ID: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,12 +22,16 @@ export class ChildDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.ID = params.id;
+    });
+    console.log(this.ID);
     this.initChildren();
   }
   initChildren(): void {
     this.childService.getChildByParent().subscribe(children => {
       this.children = children;
-      console.log(children);
+      // console.log(children);
       // console.log(this.children);
       // console.log(Object.keys(this.children).length);
       for (let i = 0; i < Object.keys(this.children).length; i ++) {

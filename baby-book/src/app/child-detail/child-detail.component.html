@@ -1,24 +1,15 @@
-<!-- <div *ngIf="children">
-
-  <img src="babyDefaultProfile.png">
-  <h2>{{children.firstName}} {{children.lastName}}</h2>
-  <h3>{{children.gender}}</h3>
-  <h3>{{children.birthday}}</h3>
-  <app-post></app-post>
-  <button (click)="goBack()">go back</button>
-</div> -->
 <div>
   <div *ngFor="let child of children">
-    <!-- <span> {{ child.id }} </span> -->
-    <div *ngIf="child.id == 1">
-        <h2> {{ child.firstName }} {{ child.lastName }} </h2>
-        <h3>{{ child.gender }}</h3>
-        <h3>{{ child.birthday }}</h3>
-        <app-post></app-post>
+    <div *ngIf="child.id == ID">
+      <div class="jumbotron jumbotron-fluid clearfix">
+        <img src="https://cdn.discordapp.com/avatars/218183356074950657/f307ddc34a3f9e54447d82c220e190b2.png" id="profile" alt="Profile Photo" class="float-left">
+          <h2 class="display-4"> {{ child.firstName }} {{ child.lastName }} </h2>
+          <p class="text-muted"> {{ child.gender }} <br> {{ child.birthday }} </p>
+      </div>
+      <!-- <app-post></app-post> -->
     </div>
   </div>
 </div>
-
 
 <div>
   <button (click)="goBack()">go back</button>

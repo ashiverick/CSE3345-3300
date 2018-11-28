@@ -21,10 +21,9 @@ export class ChildrenComponent implements OnInit {
   getChildren(): void {
     this.childService.getChildByParent().subscribe(children => {
       this.children = children;
-      // console.log(children);
-      // console.log(this.children);
+      for (let i = 0; i < Object.keys(this.children).length; i ++) {
+        this.children[i].id = children[i].ChildID;
+      }
     });
-
-    // console.log(this.children);
   }
 }

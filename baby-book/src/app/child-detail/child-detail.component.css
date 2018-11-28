@@ -28,3 +28,13 @@ button:disabled {
   color: #ccc;
   cursor: auto;
 }
+
+.jumbotron {
+  background: none;
+}
+
+#profile {
+  height: 10rem;
+  width: 10rem;
+  padding: 1rem;
+}

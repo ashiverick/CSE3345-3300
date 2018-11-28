@@ -1,6 +1,7 @@
 <ul class="children">
   <li *ngFor="let child of children">
-    <a routerLink="/detail/{{child.id}}">
+    <a [routerLink]="['/detail', child.id]">
+    <!-- <a routerLink="/detail/2"> -->
       <span class="badge">{{child.firstName}}</span>
     </a>
   </li>

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 import { Child } from '../child';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-post',
@@ -9,8 +11,6 @@ import { Child } from '../child';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
-
   post: Post;
   child: Child;
 
@@ -28,5 +28,4 @@ export class PostComponent implements OnInit {
       this.post = {};
     });
   }
-
 }
