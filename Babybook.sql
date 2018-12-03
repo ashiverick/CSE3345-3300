@@ -1,4 +1,4 @@
-#show databases;
+#show databases; 
 drop database Test;
 create database Test;
 set foreign_key_checks = 0;
